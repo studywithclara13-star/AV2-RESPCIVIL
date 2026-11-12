@@ -247,6 +247,14 @@ h1 span,.brand span{background:#E3F2FF;color:#3D7DB8}
 .sig .nm{color:#5E9FD8}
 .sig svg{filter:drop-shadow(0 6px 18px rgba(111,177,232,.28))}
 button:focus-visible,.card:focus-visible{outline-color:#8EC5F0}
+.mats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mat{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 4px 18px rgba(111,177,232,.12)}
+.mat .k{font-family:var(--f-display);color:var(--blue);font-size:15px}
+.mat h3{font-family:var(--f-display);font-size:22px;line-height:1.15;margin:0}
+.mat p{margin:0;color:var(--muted);font-size:14.5px}
+.mat .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.mat .acts a{text-decoration:none}
+@media (max-width:760px){.mats{grid-template-columns:1fr}}
 </style>
 </head><body>
 <script>
@@ -437,6 +445,7 @@ const QUADRO=[["Dano estético", "Autônomo (Súmula 387 STJ).", "Não é tercei
     <a href="#questoes">Questões</a>
     <a href="#raio-x">Raio-X das provas</a>
     <a href="#leo">Posições de Léo</a>
+    <a href="#materiais">Materiais</a>
   </div>
 </div></nav>
 
@@ -557,6 +566,24 @@ const QUADRO=[["Dano estético", "Autônomo (Súmula 387 STJ).", "Não é tercei
   <div class="tw"><table class="ltab"><thead><tr><th>Tema</th><th>Posição dominante ou legal</th><th>Léo Vieira</th></tr></thead><tbody id="leoBody"></tbody></table></div>
 </section>
 
+<section data-view="materiais" class="stage" hidden>
+  <div><h2 class="sec">Materiais</h2><p class="lead">O caderno completo da Unidade II e a transcrição explicada da palestra sobre as funções da responsabilidade civil, em PDF.</p></div>
+  <div class="mats">
+    <article class="mat">
+      <span class="k">Caderno · 77 páginas</span>
+      <h3>Caderno de Responsabilidade Civil, Unidade II</h3>
+      <p>Aulas de 25/09 a 14/11: nexo causal, imputação, temas específicos e funções, com as posições do professor Léo Vieira em destaque (em aula e no livro de 2008).</p>
+      <div class="acts"><a class="btn" href="Caderno_Responsabilidade_Civil_Unidade_II.pdf" target="_blank" rel="noopener">Abrir</a><a class="btn" href="Caderno_Responsabilidade_Civil_Unidade_II.pdf" download>Baixar PDF</a></div>
+    </article>
+    <article class="mat">
+      <span class="k">Palestra · 19 páginas</span>
+      <h3>As funções da responsabilidade civil</h3>
+      <p>Webinar IDP · IBERC: transcrição organizada da fala de cada palestrante (funções preventiva, punitiva, promocional e restitutória), com esquemas.</p>
+      <div class="acts"><a class="btn" href="Palestra_Funcoes_da_Responsabilidade_Civil.pdf" target="_blank" rel="noopener">Abrir</a><a class="btn" href="Palestra_Funcoes_da_Responsabilidade_Civil.pdf" download>Baixar PDF</a></div>
+    </article>
+  </div>
+</section>
+
 <div class="sig"><svg role="img" aria-label="Logo de Maria Clara Oliveira da Cruz"><use href="#mclogo"/></svg><div class="nm">Maria Clara Oliveira da Cruz</div><div class="sb">Direito · Responsabilidade Civil II</div></div>
 <footer>Fontes: caderno da Unidade II; SANTOS, Leonardo Vieira, <i>Responsabilidade civil médico-hospitalar e a questão da culpa no direito brasileiro</i> (JusPodivm, 2008) e o artigo no e-book <i>Vida e legado jurídico de Antônio José Marques Neto</i> (2020); webinar IDP·IBERC "As funções da responsabilidade civil" (2020). Progresso, respostas escritas e filtros ficam salvos só neste navegador.</footer>
 </div>
@@ -566,7 +593,7 @@ const $=id=>document.getElementById(id);
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 
 /* ---------- ROTAS ---------- */
-const VIEWS=["inicio","flashcards","questoes","raio-x","leo"];
+const VIEWS=["inicio","flashcards","questoes","raio-x","leo","materiais"];
 function route(){
   const h=(location.hash||"").slice(1); const v=VIEWS.includes(h)?h:"inicio";
   document.querySelectorAll("[data-view]").forEach(s=>s.hidden=s.dataset.view!==v);
